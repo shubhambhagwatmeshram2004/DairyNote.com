@@ -22,6 +22,14 @@
     --rose-tint:#F1DCD9;
     --blue:#3C6E71;
     --blue-tint:#DCE9E9;
+    --purple:#6B4E8E;
+    --purple-tint:#E6DEF0;
+    --indigo:#3F4E9C;
+    --indigo-tint:#E2E5F5;
+    --teal2:#0E7C86;
+    --teal2-tint:#D9EEEF;
+    --amber:#B5650A;
+    --amber-tint:#F6E3C9;
     --border:#D6DDC7;
     --radius-lg:20px;
     --radius-md:14px;
@@ -47,7 +55,8 @@
   .num{font-family:var(--mono);}
   a{color:inherit;}
   button{font-family:var(--sans); cursor:pointer;}
-  
+  *:focus-visible{outline:2.5px solid var(--teal2); outline-offset:2px;}
+
   ::selection{background:var(--gold-tint);}
 
   .wrap{max-width:1180px; margin:0 auto; padding:0 24px;}
@@ -59,6 +68,7 @@
     background:rgba(241,244,234,0.92);
     backdrop-filter:blur(8px);
     border-bottom:1px solid var(--border);
+    background: linear-gradient(90deg , #b1c97e 9% , #c2dbea 20% , #92afaf 40%, #e9d8b0 100%);
   }
   .topbar-inner{display:flex; align-items:center; justify-content:space-between; padding:14px 0; gap:12px; flex-wrap:wrap;}
   .brand{display:flex; align-items:center; gap:10px;}
@@ -66,9 +76,18 @@
   .brand-name{font-family:var(--display); font-weight:600; font-size:20px; color:var(--green-deep);}
   .brand-tag{font-size:11px; color:var(--ink-soft); letter-spacing:0.06em; text-transform:uppercase;}
 
-  .role-switch{display:flex; background:var(--surface-alt); border-radius:999px; padding:4px; gap:2px; border:1px solid var(--border);}
-  .role-switch button{border:none; background:transparent; padding:8px 18px; border-radius:999px; font-size:13.5px; font-weight:700; color:var(--ink-soft); transition:all .2s ease;}
-  .role-switch button.active{background:var(--green-deep); color:#F6F8F0; box-shadow:var(--shadow);}
+  .session-box{display:flex; align-items:center; gap:10px;}
+  .user-badge{
+    display:flex; align-items:center; gap:8px; background:var(--surface); border:1px solid var(--border);
+    border-radius:999px; padding:6px 14px 6px 6px; box-shadow:var(--shadow);
+  }
+  .user-avatar{width:28px; height:28px; border-radius:50%; background:var(--green-deep); color:#F6F8F0; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:800; font-family:var(--display);}
+  .user-meta{line-height:1.15;}
+  .user-meta .u-name{font-size:12.5px; font-weight:800; color:var(--green-deep);}
+  .user-meta .u-role{font-size:10.5px; color:var(--ink-soft); text-transform:uppercase; letter-spacing:0.05em;}
+  .logout-btn{border:1px solid var(--border); background:var(--surface); border-radius:999px; padding:8px 14px; font-size:12.5px; font-weight:700; color:var(--rose);}
+  .logout-btn:hover{background:var(--rose-tint);}
+  .session-lock{display:flex; align-items:center; gap:5px; font-size:10.5px; color:var(--ink-soft); background:var(--surface); border:1px solid var(--border); border-radius:999px; padding:6px 10px;}
 
   /* ---------- walking cow ---------- */
   .cow-track{
@@ -124,6 +143,9 @@
   .chip b{font-size:12.5px; color:var(--green-deep);}
   .chip .range{font-family:var(--mono); color:var(--gold); font-weight:700;}
 
+  .trust-row{display:flex; gap:10px; flex-wrap:wrap; margin-top:14px;}
+  .trust-pill{display:flex; align-items:center; gap:6px; font-size:11px; font-weight:700; color:var(--teal2); background:var(--teal2-tint); border-radius:999px; padding:6px 12px;}
+
   .stub-card{background:var(--surface); border-radius:var(--radius-lg); box-shadow:var(--shadow); padding:26px 24px 22px; position:relative; border:1px solid var(--border);}
   .stub-card::after{content:''; position:absolute; left:0; right:0; bottom:64px; height:0; border-top:2px dashed var(--border);}
   .stub-top{display:flex; justify-content:space-between; align-items:flex-start;}
@@ -132,6 +154,10 @@
   .badge.pending{background:var(--gold-tint); color:#8A5F13;}
   .badge.verified{background:var(--green-tint); color:var(--green-deep);}
   .badge.type{background:var(--blue-tint); color:var(--blue);}
+  .badge.biz{background:var(--purple-tint); color:var(--purple);}
+  .badge.week{background:var(--teal2-tint); color:var(--teal2);}
+  .badge.month{background:var(--indigo-tint); color:var(--indigo);}
+  .badge.warn{background:var(--amber-tint); color:var(--amber);}
   .stub-amount{font-family:var(--mono); font-size:34px; font-weight:700; color:var(--green-deep); margin-top:10px;}
   .stub-meta{display:flex; gap:16px; margin-top:6px; font-size:13px; color:var(--ink-soft); flex-wrap:wrap;}
   .stub-meta .num{color:var(--ink);}
@@ -144,13 +170,17 @@
   .panel-pad{padding:22px;}
   @media (max-width:640px){ .panel-pad{padding:18px;} }
 
+  .panel-head{display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:4px; flex-wrap:wrap;}
+  .panel-head .tag{font-size:10.5px; font-weight:800; text-transform:uppercase; letter-spacing:0.05em; padding:4px 9px; border-radius:999px;}
+
   .field{margin-bottom:16px;}
   .field label{display:block; font-size:12.5px; font-weight:700; color:var(--ink-soft); margin-bottom:6px; text-transform:uppercase; letter-spacing:0.03em;}
-  .field select, .field input{width:100%; padding:11px 13px; border:1.5px solid var(--border); border-radius:var(--radius-sm); font-size:14.5px; font-family:var(--sans); background:var(--bg); color:var(--ink); transition:border-color .15s ease, background .15s ease;}
+  .field select, .field input{width:100%; padding:11px 13px; border:1.5px solid var(--border); border-radius:var(--radius-sm); font-size:14.5px; font-family:var(--sans); background:var(--bg); color:var(--ink); transition:border-color .15s ease, background .15s ease, box-shadow .15s ease;}
   .field input{font-family:var(--mono);}
-  .field select:focus, .field input:focus{outline:none; border-color:var(--green); background:var(--surface);}
+  .field select:focus, .field input:focus{outline:none; border-color:var(--green); background:var(--surface); box-shadow:0 0 0 3px var(--green-tint);}
   .field .hint{font-size:11.5px; color:var(--ink-soft); margin-top:5px;}
   .field .hint.error{color:var(--rose); font-weight:600;}
+  .field .hint.lock{font-size:10.5px;}
 
   .row2{display:grid; grid-template-columns:1fr 1fr; gap:14px;}
   @media (max-width:420px){ .row2{grid-template-columns:1fr;} }
@@ -159,28 +189,38 @@
   .btn:active{transform:scale(0.98);}
   .btn-primary{background:var(--green-deep); color:#F6F8F0;}
   .btn-primary:hover{box-shadow:0 6px 18px -6px rgba(27,51,32,0.5);}
-  .btn-primary:disabled{opacity:0.55; cursor:not-allowed;}
+  .btn-primary:disabled{opacity:0.55; cursor:not-allowed; transform:none; box-shadow:none;}
   .btn-gold{background:var(--gold); color:#3A2705;}
   .btn-gold:hover{box-shadow:0 6px 18px -6px rgba(185,130,31,0.55);}
   .btn-gold:disabled{opacity:0.6; cursor:not-allowed;}
   .btn-blue{background:var(--blue); color:#F0F7F7;}
   .btn-blue:hover{box-shadow:0 6px 18px -6px rgba(60,110,113,0.5);}
   .btn-blue:disabled{opacity:0.6; cursor:not-allowed;}
+  .btn-purple{background:var(--purple); color:#F5F1FA;}
+  .btn-purple:hover{box-shadow:0 6px 18px -6px rgba(107,78,142,0.5);}
+  .btn-purple:disabled{opacity:0.6; cursor:not-allowed;}
+  .btn-teal{background:var(--teal2); color:#EAFBFB;}
+  .btn-teal:hover{box-shadow:0 6px 18px -6px rgba(14,124,134,0.5);}
+  .btn-ghost{background:transparent; border:1.5px solid var(--border); color:var(--ink-soft);}
+  .btn-ghost:hover{background:var(--surface-alt);}
   .btn-block{width:100%;}
+  .btn-sm{padding:8px 14px; font-size:12.5px;}
 
   .estimate-strip{display:flex; justify-content:space-between; align-items:center; background:var(--green-tint); border-radius:var(--radius-sm); padding:12px 14px; margin-bottom:16px; font-size:13px; color:var(--green-deep);}
+  .estimate-strip.biz{background:var(--purple-tint); color:var(--purple);}
   .estimate-strip .num{font-size:19px; font-weight:700;}
 
   .toast{margin-top:12px; padding:10px 14px; border-radius:var(--radius-sm); font-size:13px; font-weight:600; animation:rise .2s ease;}
   .toast.ok{background:var(--green-tint); color:var(--green-deep);}
   .toast.bad{background:var(--rose-tint); color:var(--rose);}
+  .toast.info{background:var(--teal2-tint); color:var(--teal2);}
   @keyframes rise{from{opacity:0; transform:translateY(4px);} to{opacity:1; transform:translateY(0);}}
 
   section.dash{padding:8px 0 72px;}
   .dash-grid{display:grid; grid-template-columns:1fr 1.4fr; gap:22px; align-items:start;}
   @media (max-width:900px){ .dash-grid{grid-template-columns:1fr;} }
 
-  .section-head{display:flex; align-items:baseline; justify-content:space-between; margin-bottom:14px;}
+  .section-head{display:flex; align-items:baseline; justify-content:space-between; margin-bottom:14px; gap:10px; flex-wrap:wrap;}
   .section-head h3{font-size:18px; font-weight:600;}
   .section-head .count{font-family:var(--mono); font-size:12px; color:var(--ink-soft);}
 
@@ -192,6 +232,7 @@
   .entry-row .right .num{font-size:15px; font-weight:700; color:var(--green-deep); display:block;}
 
   .empty{text-align:center; padding:36px 20px; color:var(--ink-soft); font-size:13.5px; border:1.5px dashed var(--border); border-radius:var(--radius-md);}
+  .empty .e-icon{font-size:26px; display:block; margin-bottom:8px;}
 
   .tabs-sub{display:flex; gap:8px; margin-bottom:18px; flex-wrap:wrap;}
   .tabs-sub button{
@@ -200,7 +241,10 @@
   }
   .tabs-sub button.active{background:var(--green-deep); color:#F6F8F0; border-color:var(--green-deep);}
 
-  .farmer-select{margin-bottom:20px;}
+  .report-toggle{display:inline-flex; gap:4px; background:var(--surface-alt); border:1px solid var(--border); border-radius:999px; padding:4px;}
+  .report-toggle button{border:none; background:transparent; padding:8px 16px; border-radius:999px; font-size:12.5px; font-weight:800; color:var(--ink-soft);}
+  .report-toggle button.active{background:var(--indigo); color:#F1F3FB;}
+  .report-toggle button.active[data-mode="week"]{background:var(--teal2); color:#EAFBFB;}
 
   .total-card{background:linear-gradient(135deg, var(--green-deep), var(--green) 130%); border-radius:var(--radius-lg); padding:24px 26px; color:#F3F6EC; box-shadow:var(--shadow); margin-bottom:22px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:14px;}
   .total-card .label{font-size:12px; text-transform:uppercase; letter-spacing:0.07em; opacity:0.75; font-weight:700;}
@@ -241,7 +285,7 @@
   .wallet-card .amount{font-family:var(--mono); font-size:38px; font-weight:700; margin-top:4px;}
   .wallet-card .sub{font-size:12px; opacity:0.85; margin-top:2px;}
 
-  .method-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-bottom:16px;}
+  .method-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-bottom:6px;}
   @media (max-width:480px){ .method-grid{grid-template-columns:1fr;} }
   .method-opt{
     border:1.5px solid var(--border); background:var(--bg); border-radius:var(--radius-sm);
@@ -249,6 +293,9 @@
   }
   .method-opt.selected{border-color:var(--blue); background:var(--blue-tint); color:var(--blue);}
   .method-opt .m-icon{font-size:18px; display:block; margin-bottom:4px;}
+
+  .security-note{display:flex; align-items:flex-start; gap:8px; font-size:11.5px; color:var(--teal2); background:var(--teal2-tint); border-radius:var(--radius-sm); padding:10px 12px; margin:4px 0 16px; line-height:1.5;}
+  .security-note .lock-icon{flex-shrink:0;}
 
   .txn-row{display:flex; justify-content:space-between; align-items:center; background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-sm); padding:12px 14px; margin-bottom:8px; gap:10px; flex-wrap:wrap;}
   .txn-left{display:flex; align-items:center; gap:10px;}
@@ -266,6 +313,91 @@
   .txn-status.success{color:var(--green);}
   .txn-status.failed{color:var(--rose);}
 
+  /* ---------- stat cards ---------- */
+  .stat-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-bottom:22px;}
+  @media (max-width:900px){ .stat-grid{grid-template-columns:1fr 1fr;} }
+  @media (max-width:480px){ .stat-grid{grid-template-columns:1fr;} }
+  .stat-card{background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-md); padding:16px; box-shadow:var(--shadow);}
+  .stat-card .label{font-size:11px; text-transform:uppercase; letter-spacing:0.05em; color:var(--ink-soft); font-weight:700;}
+  .stat-card .amount{font-family:var(--mono); font-size:22px; font-weight:700; margin-top:6px; color:var(--green-deep);}
+  .stat-card .amount.liters::after{content:' L';font-family:var(--sans); font-size:13px; color:var(--ink-soft); font-weight:700;}
+  .stat-card.rose .amount{color:var(--rose);}
+  .stat-card.purple .amount{color:var(--purple);}
+  .stat-card.teal .amount{color:var(--teal2);}
+  .stat-card.indigo .amount{color:var(--indigo);}
+  .stat-card.amber .amount{color:var(--amber);}
+
+  /* ---------- distributor sale ---------- */
+  .distributor-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-bottom:6px;}
+  @media (max-width:480px){ .distributor-grid{grid-template-columns:1fr 1fr;} }
+  .dist-opt{border:1.5px solid var(--border); background:var(--bg); border-radius:var(--radius-sm); padding:10px 6px; text-align:center; font-size:12px; font-weight:700; color:var(--ink-soft);}
+  .dist-opt.selected{border-color:var(--purple); background:var(--purple-tint); color:var(--purple);}
+
+  .sale-row{display:flex; justify-content:space-between; align-items:center; background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-sm); padding:12px 14px; margin-bottom:8px; gap:10px; flex-wrap:wrap;}
+  .sale-left b{display:block; font-size:14px;}
+  .sale-left span{font-size:12px; color:var(--ink-soft);}
+  .sale-right{text-align:right;}
+  .sale-right .num{font-size:15px; font-weight:700; color:var(--purple); display:block;}
+
+  /* ---------- excel-style report tables ---------- */
+  .excel-wrap{overflow-x:auto; border-radius:var(--radius-md); border:1px solid var(--border); box-shadow:var(--shadow); background:var(--surface);}
+  table.excel{width:100%; border-collapse:collapse; font-size:12.5px; min-width:680px;}
+  table.excel thead th{background:var(--green-deep); color:#F3F6EC; padding:11px 13px; text-align:left; white-space:nowrap; font-weight:700; letter-spacing:0.02em;}
+  table.excel thead th.sortable{cursor:pointer; user-select:none;}
+  table.excel thead th.sortable:hover{background:var(--green);}
+  table.excel thead th .arrow{opacity:0.6; font-size:10px; margin-left:3px;}
+  table.excel tbody td{padding:10px 13px; border-bottom:1px solid var(--border); white-space:nowrap;}
+  table.excel tbody td.cell-name{font-weight:800; color:var(--green-deep); background:var(--surface); position:sticky; left:0;}
+  table.excel tbody tr:nth-child(even) td:not(.cell-name){background:var(--surface-alt);}
+  table.excel tbody tr:hover td{background:var(--gold-tint);}
+  table.excel tbody tr:hover td.cell-name{background:var(--gold-tint);}
+  table.excel .cell-liters{font-family:var(--mono); font-weight:700; color:var(--ink);}
+  table.excel .cell-amt{font-family:var(--mono); font-size:11px; color:var(--ink-soft); display:block;}
+  table.excel tfoot td{font-weight:800; background:var(--green-tint); padding:11px 13px; color:var(--green-deep); font-family:var(--mono);}
+  table.excel tfoot td.cell-name{background:var(--green-tint); font-family:var(--sans);}
+  .excel-caption{font-size:11.5px; color:var(--ink-soft); padding:10px 13px; border-top:1px solid var(--border); background:var(--surface);}
+
+  .bar-row{display:grid; grid-template-columns:110px 1fr 90px; align-items:center; gap:10px; margin-bottom:9px; font-size:12px;}
+  .bar-row .b-label{color:var(--ink-soft); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+  .bar-track{height:16px; background:var(--surface-alt); border-radius:999px; overflow:hidden; border:1px solid var(--border);}
+  .bar-fill{height:100%; background:linear-gradient(90deg, var(--teal2), var(--green)); border-radius:999px; transition:width .4s ease;}
+  .bar-row .b-val{font-family:var(--mono); font-weight:700; text-align:right; color:var(--green-deep);}
+
+  /* ---------- auth screens ---------- */
+  .auth-wrap{padding:12px 0 60px;}
+  .auth-card{max-width:440px; margin:0 auto;}
+  .auth-role-tabs{display:flex; background:var(--surface-alt); border-radius:999px; padding:4px; gap:2px; border:1px solid var(--border); margin-bottom:18px;}
+  .auth-role-tabs button{flex:1; border:none; background:transparent; padding:10px; border-radius:999px; font-size:13.5px; font-weight:700; color:var(--ink-soft);}
+  .auth-role-tabs button.active{background:var(--green-deep); color:#F6F8F0;}
+  .auth-mode-tabs{display:flex; gap:8px; margin-bottom:18px;}
+  .auth-mode-tabs button{flex:1; border:1px solid var(--border); background:var(--surface); padding:9px; border-radius:var(--radius-sm); font-size:12.5px; font-weight:700; color:var(--ink-soft);}
+  .auth-mode-tabs button.active{border-color:var(--gold); background:var(--gold-tint); color:#8A5F13;}
+  .auth-form{display:none;}
+  .auth-form.active{display:block;}
+  .demo-note{font-size:11.5px; color:var(--ink-soft); background:var(--surface-alt); border-radius:var(--radius-sm); padding:10px 12px; margin-top:14px; line-height:1.55;}
+  .demo-note b{color:var(--green-deep);}
+  .quick-login-grid{display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:10px;}
+  @media (max-width:420px){ .quick-login-grid{grid-template-columns:1fr;} }
+  .quick-login-card{
+    display:flex; align-items:center; gap:9px; text-align:left; width:100%;
+    border:1.5px solid var(--border); background:var(--surface); border-radius:var(--radius-sm);
+    padding:9px 10px; font-family:var(--sans);
+  }
+  .quick-login-card:hover{border-color:var(--green); background:var(--green-tint);}
+  .quick-login-card .ql-avatar{width:26px; height:26px; border-radius:50%; background:var(--green-deep); color:#F6F8F0; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:800; font-family:var(--display); flex-shrink:0;}
+  .quick-login-card .ql-meta{line-height:1.2; overflow:hidden;}
+  .quick-login-card .ql-name{font-size:12.5px; font-weight:700; color:var(--ink); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+  .quick-login-card .ql-sub{font-size:10.5px; color:var(--ink-soft); font-family:var(--mono);}
+
+  /* ---------- modal ---------- */
+  .modal-overlay{position:fixed; inset:0; background:rgba(27,51,32,0.45); display:none; align-items:center; justify-content:center; z-index:100; padding:20px;}
+  .modal-overlay.active{display:flex;}
+  .modal-card{background:var(--surface); border-radius:var(--radius-lg); padding:26px; max-width:380px; width:100%; box-shadow:var(--shadow); border:1px solid var(--border);}
+  .modal-card h3{font-size:17px; margin-bottom:6px;}
+  .modal-card p{font-size:13px; color:var(--ink-soft); line-height:1.5; margin:0 0 16px;}
+  .modal-actions{display:flex; gap:10px; margin-top:16px;}
+  .modal-actions .btn{flex:1;}
+
   footer{text-align:center; padding:26px 0 40px; font-size:12px; color:var(--ink-soft); border-top:1px solid var(--border);}
 
   @media (prefers-reduced-motion: reduce){ *{animation-duration:0.001ms !important;} }
@@ -274,6 +406,7 @@
   .view.active{display:block;}
   .subview{display:none;}
   .subview.active{display:block;}
+  .hidden{display:none !important;}
 </style>
 </head>
 <body>
@@ -300,9 +433,9 @@
         <div class="brand-tag">Ledger &amp; Wallet</div>
       </div>
     </div>
-    <div class="role-switch" id="roleSwitch">
-      <button class="active" data-view="owner">Dairy Owner</button>
-      <button data-view="farmer">Farmer</button>
+
+    <div class="session-box" id="sessionBox">
+      <!-- filled by JS: either "please sign in" hint, or the logged-in user badge + logout -->
     </div>
   </div>
 </header>
@@ -312,11 +445,17 @@
     <div>
       <div class="eyebrow">Breed-aware fat validation</div>
       <h1>Cow milk isn't buffalo milk —<br><em>your ledger shouldn't treat it that way.</em></h1>
-      <p class="lede">Fat % is checked against the real range for the animal, so a typo like "9% fat" on cow milk gets caught before it ever reaches the farmer's app.</p>
+      <p class="lede">Fat % is checked against the real range for the animal, so a typo like "9% fat" on cow milk gets caught before it ever reaches the farmer's app. Sign in to record collections, verify payments, and track sales to distributors.</p>
 
       <div class="breed-chips">
         <div class="chip"><b>🐄 Cow — Gir, Sahiwal, Sindhi</b><span class="range">3.5% – 4.9% typical · 5.0% hard limit</span></div>
         <div class="chip"><b>🐃 Buffalo — Murrah, Mehsana</b><span class="range">6.0% – 7.5% typical · 8.0% hard limit</span></div>
+      </div>
+
+      <div class="trust-row">
+        <div class="trust-pill">🔒 PIN + password on every payout</div>
+        <div class="trust-pill">📊 Weekly &amp; monthly reports for everyone</div>
+        <div class="trust-pill">⏱️ Auto sign-out when idle</div>
       </div>
     </div>
 
@@ -365,62 +504,242 @@
   </div>
 </section>
 
-<!-- ============= OWNER VIEW ============= -->
-<section class="dash view active" id="view-owner">
+<!-- ============= AUTH: SIGN IN / SIGN UP ============= -->
+<section class="auth-wrap view active" id="view-auth">
   <div class="wrap">
-    <div class="dash-grid">
-      <div>
-        <div class="panel panel-pad">
-          <h3 style="margin-bottom:16px;">Record Milk Collection</h3>
+    <div class="auth-card">
+      <div class="toast info" id="authSecurityNote" style="display:none;"></div>
+      <div class="panel panel-pad">
+        <div class="auth-role-tabs" id="authRoleTabs">
+          <button class="active" data-role="farmer">I'm a Farmer</button>
+          <button data-role="owner">I'm the Owner</button>
+        </div>
 
-          <div class="field">
-            <label for="farmerSelect">Farmer</label>
-            <select id="farmerSelect"></select>
+        <!-- FARMER AUTH -->
+        <div id="authRoleFarmer">
+          <div class="auth-mode-tabs" id="farmerModeTabs">
+            <button class="active" data-mode="login">Sign In</button>
+            <button data-mode="signup">New Farmer? Sign Up</button>
           </div>
 
-          <div class="row2">
+          <form class="auth-form active" id="farmerLoginForm" autocomplete="off">
             <div class="field">
-              <label for="animalSelect">Animal</label>
-              <select id="animalSelect">
-                <option value="cow">🐄 Cow</option>
-                <option value="buffalo">🐃 Buffalo</option>
-              </select>
+              <label for="loginPhone">Phone Number</label>
+              <input id="loginPhone" type="tel" placeholder="98xxxxxx01" maxlength="10">
             </div>
             <div class="field">
-              <label for="breedSelect">Breed</label>
-              <select id="breedSelect"></select>
+              <label for="loginPassword">Password</label>
+              <input id="loginPassword" type="password" placeholder="••••••">
             </div>
-          </div>
+            <button type="submit" class="btn btn-primary btn-block" id="farmerLoginSubmit">Sign In</button>
+            <div id="farmerLoginToast"></div>
+            <div class="demo-note">
+              Every demo farmer uses password <b>1234</b>. Tap a name below to jump straight into that account, or type the phone number + password yourself.
+            </div>
+            <div class="quick-login-grid" id="quickFarmerLogins"></div>
+          </form>
 
-          <div class="row2">
+          <form class="auth-form" id="farmerSignupForm" autocomplete="off">
             <div class="field">
-              <label for="litersInput">Liters</label>
-              <input id="litersInput" type="number" step="0.1" min="0.1" max="500" placeholder="0.0" inputmode="decimal">
-              <div class="hint">Max 500 L per entry</div>
+              <label for="signupName">Full Name</label>
+              <input id="signupName" type="text" placeholder="Your name">
             </div>
             <div class="field">
-              <label for="fatInput">Fat %</label>
-              <input id="fatInput" type="number" step="0.1" placeholder="0.0" inputmode="decimal">
-              <div class="hint" id="fatHint">Cow range: 3.5% – 4.9% (hard limit 5.0%)</div>
+              <label for="signupPhone">Phone Number</label>
+              <input id="signupPhone" type="tel" placeholder="10-digit number" maxlength="10">
             </div>
-          </div>
+            <div class="row2">
+              <div class="field">
+                <label for="signupPassword">Password</label>
+                <input id="signupPassword" type="password" placeholder="min. 4 characters">
+              </div>
+              <div class="field">
+                <label for="signupPassword2">Confirm Password</label>
+                <input id="signupPassword2" type="password" placeholder="repeat password">
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Create My Account</button>
+            <div id="farmerSignupToast"></div>
+            <div class="demo-note">Your account is created instantly and stays for this session — this demo has no server, so it resets if the page is reloaded.</div>
+          </form>
+        </div>
 
-          <div class="estimate-strip">
-            <span>Estimated amount</span>
-            <span class="num" id="estimateOut">₹0.00</span>
-          </div>
-
-          <button class="btn btn-primary btn-block" id="submitEntryBtn">Submit for Verification</button>
-          <div id="ownerToast"></div>
+        <!-- OWNER AUTH -->
+        <div id="authRoleOwner" class="hidden">
+          <form class="auth-form active" id="ownerLoginForm" autocomplete="off">
+            <div class="field">
+              <label for="ownerUsername">Username</label>
+              <input id="ownerUsername" type="text" placeholder="owner">
+            </div>
+            <div class="field">
+              <label for="ownerPassword">Password</label>
+              <input id="ownerPassword" type="password" placeholder="••••••••">
+            </div>
+            <button type="submit" class="btn btn-primary btn-block" id="ownerLoginSubmit">Sign In as Owner</button>
+            <div id="ownerLoginToast"></div>
+            <div class="demo-note">
+              Every demo owner account uses PIN <b>1234</b> for confirming payments. Tap an account below to jump straight in, or type the username + password yourself.
+            </div>
+            <div class="quick-login-grid" id="quickOwnerLogins"></div>
+          </form>
         </div>
       </div>
+    </div>
+  </div>
+</section>
 
-      <div>
-        <div class="section-head">
-          <h3>Today's Entries</h3>
-          <span class="count" id="ownerCount">0 entries</span>
+<!-- ============= OWNER VIEW ============= -->
+<section class="dash view" id="view-owner">
+  <div class="wrap">
+
+    <div class="stat-grid">
+      <div class="stat-card">
+        <div class="label">Paid to Farmers</div>
+        <div class="amount num" id="statPaidFarmers">₹0.00</div>
+      </div>
+      <div class="stat-card purple">
+        <div class="label">Earned from Distributors</div>
+        <div class="amount num" id="statEarnedDist">₹0.00</div>
+      </div>
+      <div class="stat-card rose">
+        <div class="label">Pending Verification</div>
+        <div class="amount num" id="statPending">₹0.00</div>
+      </div>
+      <div class="stat-card teal">
+        <div class="label">This Week · All Farmers</div>
+        <div class="amount num liters" id="statWeekLiters">0</div>
+      </div>
+    </div>
+
+    <div class="tabs-sub" id="ownerTabs">
+      <button class="active" data-osub="collect">Collections &amp; Sales</button>
+      <button data-osub="reports">Farmer Reports (Excel View)</button>
+    </div>
+
+    <!-- OWNER SUBVIEW: COLLECTIONS & SALES -->
+    <div class="subview active" id="osub-collect">
+      <div class="dash-grid">
+        <div>
+          <div class="panel panel-pad">
+            <div class="panel-head">
+              <h3>Record Milk Collection</h3>
+              <span class="tag" style="background:var(--green-tint); color:var(--green-deep);">Section 1</span>
+            </div>
+
+            <div class="field" style="margin-top:14px;">
+              <label for="farmerSelect">Farmer</label>
+              <select id="farmerSelect"></select>
+            </div>
+
+            <div class="row2">
+              <div class="field">
+                <label for="animalSelect">Animal</label>
+                <select id="animalSelect">
+                  <option value="cow">🐄 Cow</option>
+                  <option value="buffalo">🐃 Buffalo</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="breedSelect">Breed</label>
+                <select id="breedSelect"></select>
+              </div>
+            </div>
+
+            <div class="row2">
+              <div class="field">
+                <label for="litersInput">Liters</label>
+                <input id="litersInput" type="number" step="0.1" min="0.1" max="500" placeholder="0.0" inputmode="decimal">
+                <div class="hint">Max 500 L per entry</div>
+              </div>
+              <div class="field">
+                <label for="fatInput">Fat %</label>
+                <input id="fatInput" type="number" step="0.1" placeholder="0.0" inputmode="decimal">
+                <div class="hint" id="fatHint">Cow range: 3.5% – 4.9% (hard limit 5.0%)</div>
+              </div>
+            </div>
+
+            <div class="estimate-strip">
+              <span>Estimated amount</span>
+              <span class="num" id="estimateOut">₹0.00</span>
+            </div>
+
+            <button class="btn btn-primary btn-block" id="submitEntryBtn">Submit for Verification</button>
+            <div id="ownerToast"></div>
+          </div>
+
+          <div class="panel panel-pad" style="margin-top:20px;">
+            <div class="panel-head">
+              <h3 style="font-size:16px;">Sell to Distributor</h3>
+              <span class="tag" style="background:var(--purple-tint); color:var(--purple);">Section 2</span>
+            </div>
+            <p style="font-size:12.5px; color:var(--ink-soft); margin:10px 0 14px;">Record a bulk sale. Confirming this requires your owner PIN.</p>
+
+            <div class="field">
+              <label>Distributor</label>
+              <div class="distributor-grid" id="distributorGrid">
+                <div class="dist-opt selected" data-dist="Amul">Amul</div>
+                <div class="dist-opt" data-dist="Dinshaw's">Dinshaw's</div>
+                <div class="dist-opt" data-dist="Mother Dairy">Mother Dairy</div>
+                <div class="dist-opt" data-dist="Gokul">Gokul</div>
+                <div class="dist-opt" data-dist="Nestlé">Nestlé</div>
+                <div class="dist-opt" data-dist="Local Market">Local Market</div>
+              </div>
+            </div>
+
+            <div class="row2">
+              <div class="field">
+                <label for="distLiters">Liters Sold</label>
+                <input id="distLiters" type="number" step="1" min="1" max="20000" placeholder="0">
+                <div class="hint">Max 20,000 L per sale</div>
+              </div>
+              <div class="field">
+                <label for="distRate">Rate per Liter (₹)</label>
+                <input id="distRate" type="number" step="0.5" min="1" max="200" placeholder="0">
+              </div>
+            </div>
+
+            <div class="estimate-strip biz">
+              <span>Sale value</span>
+              <span class="num" id="distEstimateOut">₹0.00</span>
+            </div>
+
+            <button class="btn btn-purple btn-block" id="submitDistSaleBtn">Confirm Sale (PIN required)</button>
+            <div id="distToast"></div>
+          </div>
         </div>
-        <div class="entry-list" id="ownerEntryList"></div>
+
+        <div>
+          <div class="section-head">
+            <h3>Today's Collection Entries</h3>
+            <span class="count" id="ownerCount">0 entries</span>
+          </div>
+          <div class="entry-list" id="ownerEntryList"></div>
+
+          <div class="section-head" style="margin-top:26px;">
+            <h3>Distributor Sales</h3>
+            <span class="count" id="distCount">0 sales</span>
+          </div>
+          <div id="distSaleList"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- OWNER SUBVIEW: FARMER REPORTS (EXCEL-STYLE) -->
+    <div class="subview" id="osub-reports">
+      <div class="panel panel-pad" style="margin-bottom:20px;">
+        <div class="panel-head">
+          <h3 style="font-size:16px;">All Farmers — Milk &amp; Payout Grid</h3>
+          <div class="report-toggle" id="ownerReportToggle">
+            <button class="active" data-mode="week">Weekly</button>
+            <button data-mode="month">Monthly</button>
+          </div>
+        </div>
+        <p style="font-size:12.5px; color:var(--ink-soft); margin:10px 0 0;">Spreadsheet-style view of every farmer's verified liters and payout, period by period. Click a farmer name to sort by their total. Figures are based on verified entries only.</p>
+      </div>
+
+      <div class="excel-wrap">
+        <table class="excel" id="ownerExcelTable"></table>
+        <div class="excel-caption" id="ownerExcelCaption"></div>
       </div>
     </div>
   </div>
@@ -429,13 +748,10 @@
 <!-- ============= FARMER VIEW ============= -->
 <section class="dash view" id="view-farmer">
   <div class="wrap">
-    <div class="field farmer-select" style="max-width:320px;">
-      <label for="farmerViewer">Viewing as</label>
-      <select id="farmerViewer"></select>
-    </div>
 
     <div class="tabs-sub" id="farmerTabs">
       <button class="active" data-sub="ledger">Ledger</button>
+      <button data-sub="reports">My Weekly &amp; Monthly Report</button>
       <button data-sub="wallet">Wallet &amp; Payments</button>
     </div>
 
@@ -464,6 +780,41 @@
       </div>
     </div>
 
+    <!-- REPORTS SUBVIEW -->
+    <div class="subview" id="sub-reports">
+      <div class="stat-grid" style="grid-template-columns:repeat(3,1fr);">
+        <div class="stat-card teal">
+          <div class="label">This Week</div>
+          <div class="amount num liters" id="statMyWeekLiters">0</div>
+        </div>
+        <div class="stat-card indigo">
+          <div class="label">This Month</div>
+          <div class="amount num liters" id="statMyMonthLiters">0</div>
+        </div>
+        <div class="stat-card amber">
+          <div class="label">Weekly Average (last 6 wks)</div>
+          <div class="amount num liters" id="statMyWeekAvg">0</div>
+        </div>
+      </div>
+
+      <div class="panel panel-pad" style="margin-bottom:20px;">
+        <div class="panel-head">
+          <h3 style="font-size:16px;">My Supply History</h3>
+          <div class="report-toggle" id="farmerReportToggle">
+            <button class="active" data-mode="week">Weekly</button>
+            <button data-mode="month">Monthly</button>
+          </div>
+        </div>
+        <p style="font-size:12.5px; color:var(--ink-soft); margin:10px 0 16px;">Liters and payout from your verified entries, period by period.</p>
+        <div id="farmerBarChart"></div>
+      </div>
+
+      <div class="excel-wrap">
+        <table class="excel" id="farmerExcelTable"></table>
+        <div class="excel-caption" id="farmerExcelCaption"></div>
+      </div>
+    </div>
+
     <!-- WALLET SUBVIEW -->
     <div class="subview" id="sub-wallet">
       <div class="wallet-card">
@@ -487,13 +838,17 @@
             </div>
           </div>
 
+          <div id="methodExtraField"></div>
+
           <div class="field">
             <label for="withdrawAmount">Amount</label>
             <input id="withdrawAmount" type="number" step="1" min="1" placeholder="0">
             <div class="hint" id="withdrawHint">Balance available: ₹0.00</div>
           </div>
 
-          <button class="btn btn-blue btn-block" id="withdrawBtn">Withdraw</button>
+          <div class="security-note"><span class="lock-icon">🔒</span><span>A password confirmation is required for every withdrawal, and your payout details are kept only for this session — never stored on a server.</span></div>
+
+          <button class="btn btn-blue btn-block" id="withdrawBtn">Withdraw (password required)</button>
           <div id="walletToast"></div>
         </div>
 
@@ -508,12 +863,42 @@
 
 <footer>KhataDairy — a two-sided ledger and wallet for dairy owners and farmers. Every rupee verified, every payout tracked.</footer>
 
+<!-- ============= MODALS ============= -->
+<div class="modal-overlay" id="pinModal">
+  <div class="modal-card">
+    <h3 id="pinModalTitle">Confirm with Owner PIN</h3>
+    <p id="pinModalDesc">Enter the 4-digit owner PIN to authorize this transaction.</p>
+    <input id="pinModalInput" type="password" inputmode="numeric" maxlength="4" placeholder="••••" style="width:100%; text-align:center; letter-spacing:10px; font-size:22px; padding:12px; border:1.5px solid var(--border); border-radius:var(--radius-sm); font-family:var(--mono); background:var(--bg);">
+    <div id="pinModalToast"></div>
+    <div class="modal-actions">
+      <button class="btn btn-ghost" id="pinModalCancel">Cancel</button>
+      <button class="btn btn-gold" id="pinModalConfirm">Confirm</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="pwModal">
+  <div class="modal-card">
+    <h3>Confirm It's You</h3>
+    <p id="pwModalDesc">Re-enter your password to authorize this withdrawal.</p>
+    <input id="pwModalInput" type="password" placeholder="Your password" style="width:100%; padding:12px; border:1.5px solid var(--border); border-radius:var(--radius-sm); font-family:var(--mono); background:var(--bg);">
+    <div id="pwModalToast"></div>
+    <div class="modal-actions">
+      <button class="btn btn-ghost" id="pwModalCancel">Cancel</button>
+      <button class="btn btn-blue" id="pwModalConfirm">Confirm</button>
+    </div>
+  </div>
+</div>
+
 <script>
 (function(){
   "use strict";
 
   const RATE_PER_PERCENT_PER_LITER = 6;
   const MONTH_NAMES = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+  const IDLE_LIMIT_MS = 10 * 60 * 1000;   // auto sign-out after 10 min of no activity
+  const LOCKOUT_MS = 30 * 1000;           // 30s cooldown after too many failed logins
+  const MAX_ATTEMPTS = 5;
 
   const BREEDS = {
     cow: {
@@ -526,11 +911,42 @@
     }
   };
 
-  const farmers = [
-    { id: "f1", name: "Ashok Patil" },
-    { id: "f2", name: "Meena Deshmukh" },
-    { id: "f3", name: "Ramesh Waghmare" },
+  const METHOD_FIELDS = {
+    "UPI": {
+      label: "UPI ID", placeholder: "yourname@bank", hint: "🔒 Used only to label this withdrawal — never shared.",
+      validate: v => /^[\w.\-]{2,}@[\w.\-]{2,}$/.test(v) ? null : "Enter a valid UPI ID, like name@bank."
+    },
+    "Bank Transfer": {
+      label: "Bank Account Number", placeholder: "Account number", hint: "🔒 Only the last 4 digits are ever shown back to you.",
+      validate: v => /^\d{9,18}$/.test(v) ? null : "Enter a valid account number (9–18 digits)."
+    },
+    "Cash Pickup": {
+      label: "Pickup Address", placeholder: "House no., village / town", hint: "🔒 Shared only with the person delivering your cash.",
+      validate: v => v.trim().length >= 6 ? null : "Enter a pickup address (at least 6 characters)."
+    }
+  };
+
+  // ---------- accounts (demo, in-memory only — no server / no hashing) ----------
+  // Multiple owner-side logins (e.g. main owner + branch manager), each with their own
+  // login password AND a separate PIN that's re-checked before money actually moves.
+  let owners = [
+    { id: "o1", username: "owner",   password: "owner123", pin: "1234", name: "Dairy Owner (Main)" },
+    { id: "o2", username: "manager", password: "manager123", pin: "1234", name: "Branch Manager" },
   ];
+
+  let farmers = [
+    { id: "f1", name: "Ashok Patil",     phone: "9800000001", password: "1234" },
+    { id: "f2", name: "Meena Deshmukh",  phone: "9800000002", password: "1234" },
+    { id: "f3", name: "Ramesh Waghmare", phone: "9800000003", password: "1234" },
+    { id: "f4", name: "Sunita Jadhav",   phone: "9800000004", password: "1234" },
+    { id: "f5", name: "Vitthal Kale",    phone: "9800000005", password: "1234" },
+    { id: "f6", name: "Kavita Shinde",   phone: "9800000006", password: "1234" },
+  ];
+
+  let currentUser = null; // { role: 'owner', id } | { role: 'farmer', id }
+  let loginAttempts = 0;
+  let lockoutUntil = 0;
+  let lockoutTimerHandle = null;
 
   let entrySeq = 100;
   function nextId(prefix){ entrySeq += 1; return prefix + "-0" + entrySeq; }
@@ -549,66 +965,458 @@
     };
   }
 
+  // spread demo entries across several weeks/months so weekly & monthly reports have real shape
   let entries = [
-    makeEntry("f1", "cow", "Gir", 18.5, 3.6, "VERIFIED", 1),
-    makeEntry("f1", "cow", "Sahiwal", 20.0, 3.8, "VERIFIED", 3),
-    makeEntry("f1", "buffalo", "Murrah", 17.2, 6.4, "VERIFIED", 33),
-    makeEntry("f1", "cow", "Gir", 19.0, 3.7, "VERIFIED", 34),
-    makeEntry("f2", "buffalo", "Mehsana", 12.0, 7.1, "VERIFIED", 2),
+    makeEntry("f1", "cow", "Gir", 18.5, 3.6, "VERIFIED", 0),
+    makeEntry("f1", "cow", "Gir", 17.8, 3.7, "VERIFIED", 1),
+    makeEntry("f1", "cow", "Sahiwal", 20.0, 3.8, "VERIFIED", 2),
+    makeEntry("f1", "cow", "Gir", 19.2, 3.6, "VERIFIED", 8),
+    makeEntry("f1", "buffalo", "Murrah", 17.2, 6.4, "VERIFIED", 9),
+    makeEntry("f1", "cow", "Gir", 19.0, 3.7, "VERIFIED", 15),
+    makeEntry("f1", "buffalo", "Murrah", 16.5, 6.6, "VERIFIED", 22),
+    makeEntry("f1", "cow", "Gir", 18.0, 3.8, "VERIFIED", 34),
+    makeEntry("f1", "cow", "Sahiwal", 20.5, 3.9, "VERIFIED", 40),
+
+    makeEntry("f2", "buffalo", "Mehsana", 12.0, 7.1, "VERIFIED", 1),
+    makeEntry("f2", "buffalo", "Mehsana", 13.4, 6.9, "VERIFIED", 6),
+    makeEntry("f2", "cow", "Sindhi", 14.5, 3.9, "VERIFIED", 14),
+    makeEntry("f2", "cow", "Sindhi", 15.0, 3.8, "VERIFIED", 21),
+    makeEntry("f2", "buffalo", "Mehsana", 11.5, 7.0, "VERIFIED", 30),
+
+    makeEntry("f3", "cow", "Gir", 9.0, 4.0, "VERIFIED", 5),
+    makeEntry("f3", "cow", "Gir", 9.6, 4.1, "VERIFIED", 12),
+    makeEntry("f3", "cow", "Gir", 8.8, 3.9, "VERIFIED", 20),
+
+    makeEntry("f4", "buffalo", "Murrah", 22.0, 6.5, "VERIFIED", 3),
+    makeEntry("f4", "buffalo", "Murrah", 21.5, 6.7, "VERIFIED", 10),
+
+    // still pending, waiting on the farmer to verify
     makeEntry("f2", "cow", "Sindhi", 14.5, 3.9, "PENDING", 0),
     makeEntry("f1", "buffalo", "Murrah", 21.0, 6.8, "PENDING", 0),
-    makeEntry("f3", "cow", "Gir", 9.0, 4.0, "VERIFIED", 5),
   ];
 
-  // wallet transactions: { id, farmerId, kind: CREDIT|DEBIT, amount, method, status, date, note }
+  // farmer wallet transactions: { id, farmerId, kind: CREDIT|DEBIT, amount, method, status, date, note }
   let transactions = [];
   let txnSeq = 500;
   function nextTxnId(){ txnSeq += 1; return "TXN-" + txnSeq; }
 
-  // seed credits for already-verified entries
   entries.filter(e => e.status === "VERIFIED").forEach(e => {
     transactions.push({
       id: nextTxnId(), farmerId: e.farmerId, kind: "CREDIT", amount: e.amount,
       method: "Milk Payment", status: "SUCCESS", date: e.date, note: `Verified collection #${e.id}`
     });
   });
-  // seed one past withdrawal for realism
   transactions.push({
     id: nextTxnId(), farmerId: "f1", kind: "DEBIT", amount: 250, method: "UPI",
     status: "SUCCESS", date: (() => { const d = new Date(); d.setDate(d.getDate() - 30); return d; })(),
     note: "Withdrawal to UPI"
   });
 
+  // distributor (B2B) sales — owner's revenue side
+  let distSales = [];
+  let distSeq = 900;
+  function nextDistId(){ distSeq += 1; return "DS-" + distSeq; }
+  let selectedDistributor = "Amul";
+
   function fmtRupee(n){ return "₹" + n.toFixed(2); }
   function fmtDate(d){ return d.toLocaleDateString("en-IN", { day:"2-digit", month:"short", year:"numeric" }); }
+  function fmtDateShort(d){ return d.toLocaleDateString("en-IN", { day:"2-digit", month:"short" }); }
   function farmerName(id){ const f = farmers.find(x => x.id === id); return f ? f.name : "Unknown"; }
+  function ownerById(id){ return owners.find(o => o.id === id); }
+  function ownerName(id){ const o = ownerById(id); return o ? o.name : "Owner"; }
   function animalLabel(a){ return a === "cow" ? "🐄 Cow" : "🐃 Buffalo"; }
+  function initials(name){ return name.split(" ").map(w => w[0]).slice(0,2).join("").toUpperCase(); }
 
-  // ---------- top-level view switching ----------
-  const roleSwitch = document.getElementById("roleSwitch");
-  roleSwitch.addEventListener("click", (e) => {
-    const btn = e.target.closest("button[data-view]");
-    if(!btn) return;
-    roleSwitch.querySelectorAll("button").forEach(b => b.classList.remove("active"));
-    btn.classList.add("active");
-    document.querySelectorAll(".view").forEach(v => v.classList.remove("active"));
-    document.getElementById("view-" + btn.dataset.view).classList.add("active");
-    if(btn.dataset.view === "farmer"){ renderFarmerView(); renderWallet(); }
+  function showToast(el, type, msg, autoMs){
+    el.innerHTML = `<div class="toast ${type}">${msg}</div>`;
+    if(autoMs){
+      const token = Symbol();
+      el.dataset.toastToken = String(token.toString());
+      setTimeout(() => { if(el.firstElementChild) el.innerHTML = ""; }, autoMs);
+    }
+  }
+
+  // ================= WEEK / MONTH HELPERS =================
+  function getWeekStart(d){
+    const date = new Date(d);
+    date.setHours(0,0,0,0);
+    const day = date.getDay(); // 0 Sun..6 Sat
+    const diff = (day === 0 ? -6 : 1) - day; // Monday as start of week
+    date.setDate(date.getDate() + diff);
+    return date;
+  }
+  function weekKeyOf(d){ return getWeekStart(d).toISOString().slice(0,10); }
+  function monthKeyOf(d){ return d.getFullYear() + "-" + d.getMonth(); }
+
+  function buildPeriods(mode, count){
+    const periods = [];
+    const now = new Date();
+    if(mode === "week"){
+      const start = getWeekStart(now);
+      for(let i = count - 1; i >= 0; i--){
+        const d = new Date(start); d.setDate(d.getDate() - i * 7);
+        const end = new Date(d); end.setDate(end.getDate() + 6);
+        periods.push({ key: d.toISOString().slice(0,10), label: "Wk " + fmtDateShort(d), full: fmtDateShort(d) + " – " + fmtDateShort(end) });
+      }
+    } else {
+      for(let i = count - 1; i >= 0; i--){
+        const d = new Date(now.getFullYear(), now.getMonth() - i, 1);
+        periods.push({ key: monthKeyOf(d), label: MONTH_NAMES[d.getMonth()].slice(0,3) + " " + d.getFullYear(), full: MONTH_NAMES[d.getMonth()] + " " + d.getFullYear() });
+      }
+    }
+    return periods;
+  }
+  function periodKeyForEntry(e, mode){ return mode === "week" ? weekKeyOf(e.date) : monthKeyOf(e.date); }
+
+  function periodStatsFor(farmerId, mode, periods){
+    return periods.map(p => {
+      const matches = entries.filter(e => e.farmerId === farmerId && e.status === "VERIFIED" && periodKeyForEntry(e, mode) === p.key);
+      return {
+        key: p.key, label: p.label, full: p.full,
+        liters: matches.reduce((s,e) => s + e.liters, 0),
+        amount: matches.reduce((s,e) => s + e.amount, 0),
+        count: matches.length
+      };
+    });
+  }
+
+  // ================= SESSION / VIEW SWITCHING =================
+  const sessionBox = document.getElementById("sessionBox");
+  const viewAuth = document.getElementById("view-auth");
+  const viewOwner = document.getElementById("view-owner");
+  const viewFarmer = document.getElementById("view-farmer");
+  const authSecurityNote = document.getElementById("authSecurityNote");
+
+  function showView(id){
+    [viewAuth, viewOwner, viewFarmer].forEach(v => v.classList.remove("active"));
+    document.getElementById(id).classList.add("active");
+  }
+
+  function renderSessionBox(){
+    if(!currentUser){
+      sessionBox.innerHTML = `<span style="font-size:12.5px; color:var(--ink-soft); font-weight:600;">Please sign in below</span>`;
+      return;
+    }
+    const name = currentUser.role === "owner" ? ownerName(currentUser.id) : farmerName(currentUser.id);
+    const roleLabel = currentUser.role === "owner" ? "Dairy Owner" : "Farmer";
+    sessionBox.innerHTML = `
+      <span class="session-lock" title="Auto sign-out after 10 minutes idle">🔒 Secure session</span>
+      <div class="user-badge">
+        <div class="user-avatar">${initials(name)}</div>
+        <div class="user-meta"><div class="u-name">${name}</div><div class="u-role">${roleLabel}</div></div>
+      </div>
+      <button class="logout-btn" id="logoutBtn">Sign Out</button>
+    `;
+    document.getElementById("logoutBtn").addEventListener("click", () => logout(null));
+  }
+
+  function logout(reasonMsg){
+    currentUser = null;
+    clearTimeout(idleTimer);
+    renderSessionBox();
+    showView("view-auth");
+    if(reasonMsg){
+      authSecurityNote.style.display = "block";
+      authSecurityNote.innerHTML = `<div class="toast info">🔒 ${reasonMsg}</div>`;
+    } else {
+      authSecurityNote.style.display = "none";
+      authSecurityNote.innerHTML = "";
+    }
+  }
+
+  function loginAsOwner(ownerId){
+    currentUser = { role: "owner", id: ownerId };
+    authSecurityNote.style.display = "none";
+    renderSessionBox();
+    showView("view-owner");
+    resetIdleTimer();
+    document.querySelectorAll("#ownerTabs button").forEach(b => b.classList.remove("active"));
+    document.querySelector('#ownerTabs button[data-osub="collect"]').classList.add("active");
+    document.querySelectorAll("#view-owner .subview").forEach(v => v.classList.remove("active"));
+    document.getElementById("osub-collect").classList.add("active");
+    renderOwnerList();
+    renderDistSales();
+    renderOwnerStats();
+    renderOwnerReports();
+  }
+
+  function loginAsFarmer(farmerId){
+    currentUser = { role: "farmer", id: farmerId };
+    authSecurityNote.style.display = "none";
+    renderSessionBox();
+    showView("view-farmer");
+    resetIdleTimer();
+    // reset to ledger tab on fresh login
+    document.querySelectorAll("#farmerTabs button").forEach(b => b.classList.remove("active"));
+    document.querySelector('#farmerTabs button[data-sub="ledger"]').classList.add("active");
+    document.querySelectorAll("#view-farmer .subview").forEach(v => v.classList.remove("active"));
+    document.getElementById("sub-ledger").classList.add("active");
+    renderFarmerView();
+    renderWallet();
+    renderFarmerReports();
+  }
+
+  // ================= IDLE AUTO SIGN-OUT =================
+  let idleTimer = null;
+  function resetIdleTimer(){
+    if(!currentUser) return;
+    clearTimeout(idleTimer);
+    idleTimer = setTimeout(() => {
+      logout("You were signed out after 10 minutes of inactivity, to keep your account safe.");
+    }, IDLE_LIMIT_MS);
+  }
+  ["mousemove","keydown","click","scroll","touchstart"].forEach(ev => {
+    document.addEventListener(ev, () => { if(currentUser) resetIdleTimer(); }, { passive: true });
   });
 
-  // ---------- farmer sub-tab switching (ledger / wallet) ----------
-  const farmerTabs = document.getElementById("farmerTabs");
-  farmerTabs.addEventListener("click", (e) => {
-    const btn = e.target.closest("button[data-sub]");
+  // ================= LOGIN LOCKOUT (shared helper) =================
+  function isLockedOut(){ return Date.now() < lockoutUntil; }
+  function registerFailedAttempt(toastEl, submitBtn){
+    loginAttempts += 1;
+    if(loginAttempts >= MAX_ATTEMPTS){
+      lockoutUntil = Date.now() + LOCKOUT_MS;
+      runLockoutCountdown(toastEl, submitBtn);
+    }
+  }
+  function runLockoutCountdown(toastEl, submitBtn){
+    if(lockoutTimerHandle) clearInterval(lockoutTimerHandle);
+    submitBtn.disabled = true;
+    lockoutTimerHandle = setInterval(() => {
+      const remaining = Math.ceil((lockoutUntil - Date.now()) / 1000);
+      if(remaining <= 0){
+        clearInterval(lockoutTimerHandle);
+        loginAttempts = 0;
+        submitBtn.disabled = false;
+        toastEl.innerHTML = "";
+      } else {
+        toastEl.innerHTML = `<div class="toast bad">Too many failed attempts. Try again in ${remaining}s.</div>`;
+      }
+    }, 1000);
+  }
+
+  // ================= AUTH: ROLE / MODE TABS =================
+  const authRoleTabs = document.getElementById("authRoleTabs");
+  const authRoleFarmer = document.getElementById("authRoleFarmer");
+  const authRoleOwner = document.getElementById("authRoleOwner");
+  authRoleTabs.addEventListener("click", (e) => {
+    const btn = e.target.closest("button[data-role]");
     if(!btn) return;
-    farmerTabs.querySelectorAll("button").forEach(b => b.classList.remove("active"));
+    authRoleTabs.querySelectorAll("button").forEach(b => b.classList.remove("active"));
     btn.classList.add("active");
-    document.querySelectorAll(".subview").forEach(v => v.classList.remove("active"));
-    document.getElementById("sub-" + btn.dataset.sub).classList.add("active");
-    if(btn.dataset.sub === "wallet") renderWallet();
+    if(btn.dataset.role === "farmer"){
+      authRoleFarmer.classList.remove("hidden"); authRoleOwner.classList.add("hidden");
+    } else {
+      authRoleOwner.classList.remove("hidden"); authRoleFarmer.classList.add("hidden");
+    }
   });
 
-  // ================= OWNER VIEW =================
+  const farmerModeTabs = document.getElementById("farmerModeTabs");
+  const farmerLoginForm = document.getElementById("farmerLoginForm");
+  const farmerSignupForm = document.getElementById("farmerSignupForm");
+  farmerModeTabs.addEventListener("click", (e) => {
+    const btn = e.target.closest("button[data-mode]");
+    if(!btn) return;
+    farmerModeTabs.querySelectorAll("button").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+    farmerLoginForm.classList.toggle("active", btn.dataset.mode === "login");
+    farmerSignupForm.classList.toggle("active", btn.dataset.mode === "signup");
+  });
+
+  // ---------- quick-login demo cards ----------
+  const quickFarmerLogins = document.getElementById("quickFarmerLogins");
+  const quickOwnerLogins = document.getElementById("quickOwnerLogins");
+
+  function renderQuickLogins(){
+    quickFarmerLogins.innerHTML = farmers.map(f => `
+      <button type="button" class="quick-login-card" data-quick-farmer="${f.id}">
+        <span class="ql-avatar">${initials(f.name)}</span>
+        <span class="ql-meta">
+          <span class="ql-name">${f.name}</span>
+          <span class="ql-sub">${f.phone}</span>
+        </span>
+      </button>
+    `).join("");
+
+    quickOwnerLogins.innerHTML = owners.map(o => `
+      <button type="button" class="quick-login-card" data-quick-owner="${o.id}">
+        <span class="ql-avatar">${initials(o.name)}</span>
+        <span class="ql-meta">
+          <span class="ql-name">${o.name}</span>
+          <span class="ql-sub">@${o.username}</span>
+        </span>
+      </button>
+    `).join("");
+  }
+
+  quickFarmerLogins.addEventListener("click", (e) => {
+    const btn = e.target.closest("[data-quick-farmer]");
+    if(!btn) return;
+    farmerLoginToast.innerHTML = "";
+    loginAttempts = 0;
+    loginAsFarmer(btn.dataset.quickFarmer);
+  });
+
+  quickOwnerLogins.addEventListener("click", (e) => {
+    const btn = e.target.closest("[data-quick-owner]");
+    if(!btn) return;
+    ownerLoginToast.innerHTML = "";
+    loginAttempts = 0;
+    loginAsOwner(btn.dataset.quickOwner);
+  });
+
+  // ---------- farmer sign in ----------
+  const farmerLoginToast = document.getElementById("farmerLoginToast");
+  const farmerLoginSubmit = document.getElementById("farmerLoginSubmit");
+  farmerLoginForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    if(isLockedOut()) return;
+    farmerLoginToast.innerHTML = "";
+    const phone = document.getElementById("loginPhone").value.trim();
+    const pw = document.getElementById("loginPassword").value;
+    const farmer = farmers.find(f => f.phone === phone);
+    if(!farmer || farmer.password !== pw){
+      registerFailedAttempt(farmerLoginToast, farmerLoginSubmit);
+      showToast(farmerLoginToast, "bad", "Phone number or password is incorrect.");
+      return;
+    }
+    loginAttempts = 0;
+    document.getElementById("loginPhone").value = "";
+    document.getElementById("loginPassword").value = "";
+    loginAsFarmer(farmer.id);
+  });
+
+  // ---------- farmer sign up ----------
+  const farmerSignupToast = document.getElementById("farmerSignupToast");
+  farmerSignupForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    farmerSignupToast.innerHTML = "";
+    const name = document.getElementById("signupName").value.trim();
+    const phone = document.getElementById("signupPhone").value.trim();
+    const pw = document.getElementById("signupPassword").value;
+    const pw2 = document.getElementById("signupPassword2").value;
+
+    if(name.length < 2){
+      showToast(farmerSignupToast, "bad", "Enter your full name."); return;
+    }
+    if(!/^\d{10}$/.test(phone)){
+      showToast(farmerSignupToast, "bad", "Phone number must be exactly 10 digits."); return;
+    }
+    if(farmers.some(f => f.phone === phone)){
+      showToast(farmerSignupToast, "bad", "An account with this phone number already exists — try signing in instead."); return;
+    }
+    if(pw.length < 4){
+      showToast(farmerSignupToast, "bad", "Password must be at least 4 characters."); return;
+    }
+    if(pw !== pw2){
+      showToast(farmerSignupToast, "bad", "Passwords don't match."); return;
+    }
+
+    const newFarmer = { id: "f" + (farmers.length + 1) + "-" + Date.now().toString().slice(-4), name, phone, password: pw };
+    farmers.push(newFarmer);
+    refreshFarmerSelect();
+    renderQuickLogins();
+
+    showToast(farmerSignupToast, "ok", "Account created! Signing you in…");
+    document.getElementById("signupName").value = "";
+    document.getElementById("signupPhone").value = "";
+    document.getElementById("signupPassword").value = "";
+    document.getElementById("signupPassword2").value = "";
+    setTimeout(() => loginAsFarmer(newFarmer.id), 500);
+  });
+
+  // ---------- owner sign in ----------
+  const ownerLoginForm = document.getElementById("ownerLoginForm");
+  const ownerLoginToast = document.getElementById("ownerLoginToast");
+  const ownerLoginSubmit = document.getElementById("ownerLoginSubmit");
+  ownerLoginForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    if(isLockedOut()) return;
+    ownerLoginToast.innerHTML = "";
+    const u = document.getElementById("ownerUsername").value.trim();
+    const p = document.getElementById("ownerPassword").value;
+    const ownerAcct = owners.find(o => o.username === u && o.password === p);
+    if(!ownerAcct){
+      registerFailedAttempt(ownerLoginToast, ownerLoginSubmit);
+      showToast(ownerLoginToast, "bad", "Username or password is incorrect.");
+      return;
+    }
+    loginAttempts = 0;
+    document.getElementById("ownerUsername").value = "";
+    document.getElementById("ownerPassword").value = "";
+    loginAsOwner(ownerAcct.id);
+  });
+
+  // ================= PIN MODAL (owner re-authorization) =================
+  const pinModal = document.getElementById("pinModal");
+  const pinModalInput = document.getElementById("pinModalInput");
+  const pinModalToast = document.getElementById("pinModalToast");
+  const pinModalConfirm = document.getElementById("pinModalConfirm");
+  const pinModalCancel = document.getElementById("pinModalCancel");
+  let pendingPinAction = null;
+
+  function openPinModal(desc, onConfirm){
+    document.getElementById("pinModalDesc").textContent = desc;
+    pinModalInput.value = "";
+    pinModalToast.innerHTML = "";
+    pendingPinAction = onConfirm;
+    pinModal.classList.add("active");
+    setTimeout(() => pinModalInput.focus(), 50);
+  }
+  function closePinModal(){ pinModal.classList.remove("active"); pendingPinAction = null; }
+  pinModalCancel.addEventListener("click", closePinModal);
+  pinModalConfirm.addEventListener("click", () => {
+    const ownerAcct = currentUser && currentUser.role === "owner" ? ownerById(currentUser.id) : null;
+    if(!ownerAcct || pinModalInput.value !== ownerAcct.pin){
+      showToast(pinModalToast, "bad", "Incorrect PIN.");
+      return;
+    }
+    const action = pendingPinAction;
+    closePinModal();
+    if(action) action();
+  });
+
+  // ================= PASSWORD MODAL (farmer re-authorization) =================
+  const pwModal = document.getElementById("pwModal");
+  const pwModalInput = document.getElementById("pwModalInput");
+  const pwModalToast = document.getElementById("pwModalToast");
+  const pwModalConfirm = document.getElementById("pwModalConfirm");
+  const pwModalCancel = document.getElementById("pwModalCancel");
+  let pendingPwAction = null;
+
+  function openPwModal(desc, onConfirm){
+    document.getElementById("pwModalDesc").textContent = desc;
+    pwModalInput.value = "";
+    pwModalToast.innerHTML = "";
+    pendingPwAction = onConfirm;
+    pwModal.classList.add("active");
+    setTimeout(() => pwModalInput.focus(), 50);
+  }
+  function closePwModal(){ pwModal.classList.remove("active"); pendingPwAction = null; }
+  pwModalCancel.addEventListener("click", closePwModal);
+  pwModalConfirm.addEventListener("click", () => {
+    const farmer = farmers.find(f => f.id === currentUser.id);
+    if(!farmer || pwModalInput.value !== farmer.password){
+      showToast(pwModalToast, "bad", "Incorrect password.");
+      return;
+    }
+    const action = pendingPwAction;
+    closePwModal();
+    if(action) action();
+  });
+
+  // ================= OWNER VIEW: TABS =================
+  const ownerTabs = document.getElementById("ownerTabs");
+  ownerTabs.addEventListener("click", (e) => {
+    const btn = e.target.closest("button[data-osub]");
+    if(!btn) return;
+    ownerTabs.querySelectorAll("button").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+    document.querySelectorAll("#view-owner .subview").forEach(v => v.classList.remove("active"));
+    document.getElementById("osub-" + btn.dataset.osub).classList.add("active");
+    if(btn.dataset.osub === "reports") renderOwnerReports();
+  });
+
+  // ================= OWNER VIEW: COLLECTION FORM =================
   const farmerSelect = document.getElementById("farmerSelect");
   const animalSelect = document.getElementById("animalSelect");
   const breedSelect = document.getElementById("breedSelect");
@@ -621,11 +1429,10 @@
   const ownerEntryList = document.getElementById("ownerEntryList");
   const ownerCount = document.getElementById("ownerCount");
 
-  farmers.forEach(f => {
-    const opt = document.createElement("option");
-    opt.value = f.id; opt.textContent = f.name;
-    farmerSelect.appendChild(opt);
-  });
+  function refreshFarmerSelect(){
+    farmerSelect.innerHTML = farmers.map(f => `<option value="${f.id}">${f.name}</option>`).join("");
+  }
+  refreshFarmerSelect();
 
   function populateBreeds(){
     const cfg = BREEDS[animalSelect.value];
@@ -657,6 +1464,7 @@
   }
 
   submitEntryBtn.addEventListener("click", () => {
+    if(!currentUser || currentUser.role !== "owner") return;
     const l = parseFloat(litersInput.value);
     const f = parseFloat(fatInput.value);
     const animal = animalSelect.value;
@@ -664,17 +1472,23 @@
     const err = validateEntry(l, f, animal);
     ownerToast.innerHTML = "";
 
-    if(err){
-      ownerToast.innerHTML = `<div class="toast bad">${err}</div>`;
-      return;
-    }
+    if(err){ showToast(ownerToast, "bad", err); return; }
+    if(!farmerSelect.value){ showToast(ownerToast, "bad", "Select a farmer first."); return; }
 
-    const entry = makeEntry(farmerSelect.value, animal, breed, l, f, "PENDING", 0);
-    entries.unshift(entry);
-    ownerToast.innerHTML = `<div class="toast ok">Entry submitted — awaiting ${farmerName(entry.farmerId)}'s verification.</div>`;
-    litersInput.value = ""; fatInput.value = "";
-    updateEstimate();
-    renderOwnerList();
+    submitEntryBtn.disabled = true;
+    submitEntryBtn.textContent = "Saving…";
+    setTimeout(() => {
+      const entry = makeEntry(farmerSelect.value, animal, breed, l, f, "PENDING", 0);
+      entries.unshift(entry);
+      showToast(ownerToast, "ok", `Entry submitted — awaiting ${farmerName(entry.farmerId)}'s verification.`, 5000);
+      litersInput.value = ""; fatInput.value = "";
+      updateEstimate();
+      submitEntryBtn.disabled = false;
+      submitEntryBtn.textContent = "Submit for Verification";
+      renderOwnerList();
+      renderOwnerStats();
+      renderOwnerReports();
+    }, 400);
   });
 
   function renderOwnerList(){
@@ -683,7 +1497,7 @@
     ownerCount.textContent = todays.length + (todays.length === 1 ? " entry" : " entries");
 
     if(todays.length === 0){
-      ownerEntryList.innerHTML = `<div class="empty">No entries recorded today yet. Use the form to log your first collection.</div>`;
+      ownerEntryList.innerHTML = `<div class="empty"><span class="e-icon">🥛</span>No entries recorded today yet. Use the form to log your first collection.</div>`;
       return;
     }
 
@@ -701,14 +1515,192 @@
     `).join("");
   }
 
-  // ================= FARMER: LEDGER =================
-  const farmerViewer = document.getElementById("farmerViewer");
-  farmers.forEach(f => {
-    const opt = document.createElement("option");
-    opt.value = f.id; opt.textContent = f.name;
-    farmerViewer.appendChild(opt);
+  function renderOwnerStats(){
+    const paid = entries.filter(e => e.status === "VERIFIED").reduce((s,e) => s + e.amount, 0);
+    const pending = entries.filter(e => e.status === "PENDING").reduce((s,e) => s + e.amount, 0);
+    const earned = distSales.reduce((s,d) => s + d.amount, 0);
+    const wk = weekKeyOf(new Date());
+    const weekLiters = entries.filter(e => e.status === "VERIFIED" && weekKeyOf(e.date) === wk).reduce((s,e) => s + e.liters, 0);
+    document.getElementById("statPaidFarmers").textContent = fmtRupee(paid);
+    document.getElementById("statEarnedDist").textContent = fmtRupee(earned);
+    document.getElementById("statPending").textContent = fmtRupee(pending);
+    document.getElementById("statWeekLiters").textContent = weekLiters.toFixed(1);
+  }
+
+  // ================= OWNER VIEW: SELL TO DISTRIBUTOR =================
+  const distributorGrid = document.getElementById("distributorGrid");
+  const distLiters = document.getElementById("distLiters");
+  const distRate = document.getElementById("distRate");
+  const distEstimateOut = document.getElementById("distEstimateOut");
+  const submitDistSaleBtn = document.getElementById("submitDistSaleBtn");
+  const distToast = document.getElementById("distToast");
+  const distSaleList = document.getElementById("distSaleList");
+  const distCount = document.getElementById("distCount");
+
+  distributorGrid.addEventListener("click", (e) => {
+    const opt = e.target.closest(".dist-opt");
+    if(!opt) return;
+    distributorGrid.querySelectorAll(".dist-opt").forEach(o => o.classList.remove("selected"));
+    opt.classList.add("selected");
+    selectedDistributor = opt.dataset.dist;
   });
-  farmerViewer.addEventListener("change", () => { renderFarmerView(); renderWallet(); });
+
+  function updateDistEstimate(){
+    const l = parseFloat(distLiters.value) || 0;
+    const r = parseFloat(distRate.value) || 0;
+    distEstimateOut.textContent = fmtRupee(l * r);
+  }
+  distLiters.addEventListener("input", updateDistEstimate);
+  distRate.addEventListener("input", updateDistEstimate);
+
+  submitDistSaleBtn.addEventListener("click", () => {
+    if(!currentUser || currentUser.role !== "owner") return;
+    distToast.innerHTML = "";
+    const l = parseFloat(distLiters.value);
+    const r = parseFloat(distRate.value);
+
+    if(!l || l <= 0){ showToast(distToast, "bad", "Enter liters sold, greater than 0."); return; }
+    if(l > 20000){ showToast(distToast, "bad", "A single sale can't exceed 20,000 L. Split it into multiple entries."); return; }
+    if(!r || r <= 0){ showToast(distToast, "bad", "Enter a rate per liter, greater than 0."); return; }
+    if(r > 200){ showToast(distToast, "bad", `₹${r}/L looks too high to be a real rate — please check it.`); return; }
+
+    openPinModal(`Confirm sale of ${l} L to ${selectedDistributor} at ₹${r}/L (${fmtRupee(l*r)}).`, () => {
+      submitDistSaleBtn.disabled = true;
+      submitDistSaleBtn.textContent = "Recording…";
+      setTimeout(() => {
+        const sale = {
+          id: nextDistId(), distributor: selectedDistributor, liters: l, rate: r,
+          amount: l * r, date: new Date(), status: "COMPLETED"
+        };
+        distSales.unshift(sale);
+        distLiters.value = ""; distRate.value = "";
+        updateDistEstimate();
+        submitDistSaleBtn.disabled = false;
+        submitDistSaleBtn.textContent = "Confirm Sale (PIN required)";
+        showToast(distToast, "ok", `Sale of ${fmtRupee(sale.amount)} to ${sale.distributor} recorded.`, 5000);
+        renderDistSales();
+        renderOwnerStats();
+      }, 400);
+    });
+  });
+
+  function renderDistSales(){
+    distCount.textContent = distSales.length + (distSales.length === 1 ? " sale" : " sales");
+    if(distSales.length === 0){
+      distSaleList.innerHTML = `<div class="empty"><span class="e-icon">🚚</span>No distributor sales recorded yet. Use the form to log your first bulk sale.</div>`;
+      return;
+    }
+    distSaleList.innerHTML = distSales.map(s => `
+      <div class="sale-row">
+        <div class="sale-left">
+          <b>${s.distributor}</b>
+          <span>${s.liters} L · ₹${s.rate.toFixed(2)}/L · ${fmtDate(s.date)} · #${s.id}</span>
+        </div>
+        <div class="sale-right">
+          <span class="num">${fmtRupee(s.amount)}</span>
+          <span class="badge biz">Completed</span>
+        </div>
+      </div>
+    `).join("");
+  }
+
+  // ================= OWNER VIEW: FARMER REPORTS (EXCEL-STYLE GRID) =================
+  let ownerReportMode = "week";
+  let ownerSortDir = "desc";
+  const ownerReportToggle = document.getElementById("ownerReportToggle");
+  const ownerExcelTable = document.getElementById("ownerExcelTable");
+  const ownerExcelCaption = document.getElementById("ownerExcelCaption");
+
+  ownerReportToggle.addEventListener("click", (e) => {
+    const btn = e.target.closest("button[data-mode]");
+    if(!btn) return;
+    ownerReportToggle.querySelectorAll("button").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+    ownerReportMode = btn.dataset.mode;
+    renderOwnerReports();
+  });
+
+  function renderOwnerReports(){
+    const periodsCount = ownerReportMode === "week" ? 6 : 6;
+    const periods = buildPeriods(ownerReportMode, periodsCount);
+
+    let rows = farmers.map(f => {
+      const stats = periodStatsFor(f.id, ownerReportMode, periods);
+      const totalLiters = stats.reduce((s,p) => s + p.liters, 0);
+      const totalAmount = stats.reduce((s,p) => s + p.amount, 0);
+      return { farmer: f, stats, totalLiters, totalAmount };
+    });
+
+    rows.sort((a,b) => ownerSortDir === "desc" ? b.totalLiters - a.totalLiters : a.totalLiters - b.totalLiters);
+
+    const thead = `
+      <thead>
+        <tr>
+          <th class="sortable" id="ownerSortHeader">Farmer <span class="arrow">${ownerSortDir === "desc" ? "▼" : "▲"}</span></th>
+          ${periods.map(p => `<th title="${p.full}">${p.label}</th>`).join("")}
+          <th>Window Total</th>
+        </tr>
+      </thead>`;
+
+    const tbody = `
+      <tbody>
+        ${rows.map(r => `
+          <tr>
+            <td class="cell-name">${r.farmer.name}</td>
+            ${r.stats.map(p => `
+              <td>
+                <span class="cell-liters">${p.liters.toFixed(1)} L</span>
+                <span class="cell-amt">${fmtRupee(p.amount)}</span>
+              </td>
+            `).join("")}
+            <td>
+              <span class="cell-liters">${r.totalLiters.toFixed(1)} L</span>
+              <span class="cell-amt">${fmtRupee(r.totalAmount)}</span>
+            </td>
+          </tr>
+        `).join("")}
+      </tbody>`;
+
+    const colTotals = periods.map((p, idx) => rows.reduce((s,r) => s + r.stats[idx].liters, 0));
+    const colAmtTotals = periods.map((p, idx) => rows.reduce((s,r) => s + r.stats[idx].amount, 0));
+    const grandLiters = rows.reduce((s,r) => s + r.totalLiters, 0);
+    const grandAmount = rows.reduce((s,r) => s + r.totalAmount, 0);
+
+    const tfoot = `
+      <tfoot>
+        <tr>
+          <td class="cell-name">All Farmers</td>
+          ${colTotals.map((t, i) => `<td>${t.toFixed(1)} L<br><span style="font-family:var(--sans); font-weight:600;">${fmtRupee(colAmtTotals[i])}</span></td>`).join("")}
+          <td>${grandLiters.toFixed(1)} L<br><span style="font-family:var(--sans); font-weight:600;">${fmtRupee(grandAmount)}</span></td>
+        </tr>
+      </tfoot>`;
+
+    ownerExcelTable.innerHTML = thead + tbody + tfoot;
+    ownerExcelCaption.textContent = ownerReportMode === "week"
+      ? `Showing the last ${periodsCount} weeks (Monday–Sunday), most recent on the right. Click "Farmer" to flip sort order.`
+      : `Showing the last ${periodsCount} months, most recent on the right. Click "Farmer" to flip sort order.`;
+
+    const header = document.getElementById("ownerSortHeader");
+    if(header){
+      header.addEventListener("click", () => {
+        ownerSortDir = ownerSortDir === "desc" ? "asc" : "desc";
+        renderOwnerReports();
+      });
+    }
+  }
+
+  // ================= FARMER: TABS =================
+  const farmerTabs = document.getElementById("farmerTabs");
+  farmerTabs.addEventListener("click", (e) => {
+    const btn = e.target.closest("button[data-sub]");
+    if(!btn) return;
+    farmerTabs.querySelectorAll("button").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+    document.querySelectorAll("#view-farmer .subview").forEach(v => v.classList.remove("active"));
+    document.getElementById("sub-" + btn.dataset.sub).classList.add("active");
+    if(btn.dataset.sub === "wallet") renderWallet();
+    if(btn.dataset.sub === "reports") renderFarmerReports();
+  });
 
   const pendingList = document.getElementById("pendingList");
   const pendingCount = document.getElementById("pendingCount");
@@ -718,13 +1710,14 @@
   const verifiedCountPill = document.getElementById("verifiedCountPill");
 
   function renderFarmerView(){
-    const farmerId = farmerViewer.value || farmers[0].id;
+    if(!currentUser || currentUser.role !== "farmer") return;
+    const farmerId = currentUser.id;
 
     const pending = entries.filter(e => e.farmerId === farmerId && e.status === "PENDING");
     pendingCount.textContent = pending.length + " pending";
 
     if(pending.length === 0){
-      pendingList.innerHTML = `<div class="empty">You're all caught up — nothing waiting on your confirmation.</div>`;
+      pendingList.innerHTML = `<div class="empty"><span class="e-icon">✅</span>You're all caught up — nothing waiting on your confirmation.</div>`;
     } else {
       pendingList.innerHTML = pending.map(e => `
         <div class="pending-card" id="card-${e.id}">
@@ -751,7 +1744,7 @@
     verifiedCountPill.textContent = verified.length + " verified";
 
     if(verified.length === 0){
-      ledgerList.innerHTML = `<div class="empty">Verified entries will build your ledger here, grouped by month.</div>`;
+      ledgerList.innerHTML = `<div class="empty"><span class="e-icon">📒</span>Verified entries will build your ledger here, grouped by month.</div>`;
       return;
     }
 
@@ -780,10 +1773,11 @@
     const btn = e.target.closest("[data-verify]");
     if(!btn) return;
     const id = btn.dataset.verify;
-    const card = document.getElementById("card-" + id);
     const entry = entries.find(x => x.id === id);
-    if(!entry) return;
+    // safety check: a farmer can only ever verify their own entry
+    if(!entry || !currentUser || currentUser.role !== "farmer" || entry.farmerId !== currentUser.id) return;
 
+    const card = document.getElementById("card-" + id);
     card.classList.add("done");
     card.querySelector(".badge.pending").outerHTML = '<span class="badge verified">Verified</span>';
     btn.disabled = true;
@@ -797,9 +1791,96 @@
       });
       renderFarmerView();
       renderOwnerList();
+      renderOwnerStats();
+      renderOwnerReports();
       renderWallet();
+      renderFarmerReports();
     }, 700); // simulated spotty-network round trip
   });
+
+  // ================= FARMER: MY REPORTS (WEEKLY / MONTHLY) =================
+  let farmerReportMode = "week";
+  const farmerReportToggle = document.getElementById("farmerReportToggle");
+  const farmerExcelTable = document.getElementById("farmerExcelTable");
+  const farmerExcelCaption = document.getElementById("farmerExcelCaption");
+  const farmerBarChart = document.getElementById("farmerBarChart");
+
+  farmerReportToggle.addEventListener("click", (e) => {
+    const btn = e.target.closest("button[data-mode]");
+    if(!btn) return;
+    farmerReportToggle.querySelectorAll("button").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+    farmerReportMode = btn.dataset.mode;
+    renderFarmerReports();
+  });
+
+  function renderFarmerReports(){
+    if(!currentUser || currentUser.role !== "farmer") return;
+    const farmerId = currentUser.id;
+
+    // top stat cards (always weekly/monthly regardless of toggle)
+    const weekPeriods = buildPeriods("week", 6);
+    const weekStats = periodStatsFor(farmerId, "week", weekPeriods);
+    const thisWeek = weekStats[weekStats.length - 1];
+    const avgWeek = weekStats.reduce((s,p) => s + p.liters, 0) / weekStats.length;
+
+    const monthPeriods = buildPeriods("month", 1);
+    const monthStats = periodStatsFor(farmerId, "month", monthPeriods);
+    const thisMonth = monthStats[monthStats.length - 1];
+
+    document.getElementById("statMyWeekLiters").textContent = thisWeek.liters.toFixed(1);
+    document.getElementById("statMyMonthLiters").textContent = thisMonth.liters.toFixed(1);
+    document.getElementById("statMyWeekAvg").textContent = avgWeek.toFixed(1);
+
+    // main table + bar chart, based on toggle
+    const periods = buildPeriods(farmerReportMode, farmerReportMode === "week" ? 8 : 6);
+    const stats = periodStatsFor(farmerId, farmerReportMode, periods);
+    const maxLiters = Math.max(1, ...stats.map(p => p.liters));
+
+    farmerBarChart.innerHTML = stats.map(p => `
+      <div class="bar-row">
+        <div class="b-label" title="${p.full}">${p.label}</div>
+        <div class="bar-track"><div class="bar-fill" style="width:${(p.liters / maxLiters * 100).toFixed(1)}%"></div></div>
+        <div class="b-val">${p.liters.toFixed(1)} L</div>
+      </div>
+    `).join("");
+
+    const totalLiters = stats.reduce((s,p) => s + p.liters, 0);
+    const totalAmount = stats.reduce((s,p) => s + p.amount, 0);
+    const totalEntries = stats.reduce((s,p) => s + p.count, 0);
+
+    farmerExcelTable.innerHTML = `
+      <thead>
+        <tr>
+          <th>Period</th>
+          <th>Liters Supplied</th>
+          <th>Entries</th>
+          <th>Amount Earned</th>
+        </tr>
+      </thead>
+      <tbody>
+        ${stats.map(p => `
+          <tr>
+            <td class="cell-name">${p.full} <span class="badge ${farmerReportMode === "week" ? "week" : "month"}" style="margin-left:6px;">${farmerReportMode === "week" ? "Week" : "Month"}</span></td>
+            <td class="cell-liters">${p.liters.toFixed(1)} L</td>
+            <td>${p.count}</td>
+            <td class="cell-liters">${fmtRupee(p.amount)}</td>
+          </tr>
+        `).join("")}
+      </tbody>
+      <tfoot>
+        <tr>
+          <td class="cell-name">Total</td>
+          <td>${totalLiters.toFixed(1)} L</td>
+          <td>${totalEntries}</td>
+          <td>${fmtRupee(totalAmount)}</td>
+        </tr>
+      </tfoot>`;
+
+    farmerExcelCaption.textContent = farmerReportMode === "week"
+      ? "Your last 8 weeks (Monday–Sunday) of verified milk supply."
+      : "Your last 6 months of verified milk supply.";
+  }
 
   // ================= FARMER: WALLET & PAYMENTS =================
   const walletBalanceOut = document.getElementById("walletBalanceOut");
@@ -809,14 +1890,28 @@
   const walletToast = document.getElementById("walletToast");
   const txnList = document.getElementById("txnList");
   const methodGrid = document.getElementById("methodGrid");
+  const methodExtraField = document.getElementById("methodExtraField");
 
   let selectedMethod = "UPI";
+
+  function renderMethodExtraField(){
+    const cfg = METHOD_FIELDS[selectedMethod];
+    methodExtraField.innerHTML = `
+      <div class="field">
+        <label for="methodExtraInput">${cfg.label}</label>
+        <input id="methodExtraInput" type="text" placeholder="${cfg.placeholder}" autocomplete="off">
+        <div class="hint">${cfg.hint}</div>
+      </div>`;
+  }
+  renderMethodExtraField();
+
   methodGrid.addEventListener("click", (e) => {
     const opt = e.target.closest(".method-opt");
     if(!opt) return;
     methodGrid.querySelectorAll(".method-opt").forEach(o => o.classList.remove("selected"));
     opt.classList.add("selected");
     selectedMethod = opt.dataset.method;
+    renderMethodExtraField();
   });
 
   function walletBalance(farmerId){
@@ -825,8 +1920,15 @@
       .reduce((sum, t) => sum + (t.kind === "CREDIT" ? t.amount : -t.amount), 0);
   }
 
+  function maskDestination(method, val){
+    if(method === "Bank Transfer") return "•••• " + val.slice(-4);
+    if(method === "UPI") return val.length > 3 ? val[0] + "***" + val.slice(val.indexOf("@")) : val;
+    return val.length > 10 ? val.slice(0, 10) + "…" : val;
+  }
+
   function renderWallet(){
-    const farmerId = farmerViewer.value || farmers[0].id;
+    if(!currentUser || currentUser.role !== "farmer") return;
+    const farmerId = currentUser.id;
     const balance = walletBalance(farmerId);
     walletBalanceOut.textContent = fmtRupee(balance);
     withdrawHint.textContent = `Balance available: ${fmtRupee(balance)}`;
@@ -836,7 +1938,7 @@
       .sort((a,b) => b.date - a.date);
 
     if(list.length === 0){
-      txnList.innerHTML = `<div class="empty">No transactions yet.</div>`;
+      txnList.innerHTML = `<div class="empty"><span class="e-icon">💳</span>No transactions yet.</div>`;
       return;
     }
 
@@ -858,51 +1960,58 @@
   }
 
   withdrawBtn.addEventListener("click", () => {
-    const farmerId = farmerViewer.value || farmers[0].id;
+    if(!currentUser || currentUser.role !== "farmer") return;
+    const farmerId = currentUser.id;
     const amt = parseFloat(withdrawAmount.value);
     const balance = walletBalance(farmerId);
     walletToast.innerHTML = "";
 
-    if(!amt || amt <= 0){
-      walletToast.innerHTML = `<div class="toast bad">Enter an amount greater than ₹0.</div>`;
-      return;
-    }
-    if(amt > balance){
-      walletToast.innerHTML = `<div class="toast bad">You can't withdraw more than your available balance of ${fmtRupee(balance)}.</div>`;
-      return;
-    }
+    if(!amt || amt <= 0){ showToast(walletToast, "bad", "Enter an amount greater than ₹0."); return; }
+    if(amt > balance){ showToast(walletToast, "bad", `You can't withdraw more than your available balance of ${fmtRupee(balance)}.`); return; }
 
-    const txn = {
-      id: nextTxnId(), farmerId, kind: "DEBIT", amount: amt, method: selectedMethod,
-      status: "PROCESSING", date: new Date(), note: `Withdrawal requested via ${selectedMethod}`
-    };
-    transactions.unshift(txn);
-    withdrawBtn.disabled = true;
-    withdrawBtn.textContent = "Processing…";
-    renderWallet();
-    walletToast.innerHTML = `<div class="toast ok">Withdrawal of ${fmtRupee(amt)} initiated via ${selectedMethod}.</div>`;
+    const extraInput = document.getElementById("methodExtraInput");
+    const extraVal = extraInput ? extraInput.value.trim() : "";
+    const extraErr = METHOD_FIELDS[selectedMethod].validate(extraVal);
+    if(extraErr){ showToast(walletToast, "bad", extraErr); return; }
 
-    // simulate a rural-network settlement delay, with a small chance of failure to retry
-    setTimeout(() => {
-      const willFail = Math.random() < 0.12;
-      txn.status = willFail ? "FAILED" : "SUCCESS";
-      txn.note = willFail ? `${selectedMethod} withdrawal failed — signal dropped, funds returned` : `Withdrawal to ${selectedMethod} completed`;
-      withdrawBtn.disabled = false;
-      withdrawBtn.textContent = "Withdraw";
-      withdrawAmount.value = "";
+    const destination = maskDestination(selectedMethod, extraVal);
+
+    openPwModal(`Confirm withdrawal of ${fmtRupee(amt)} via ${selectedMethod} to ${destination}.`, () => {
+      const txn = {
+        id: nextTxnId(), farmerId, kind: "DEBIT", amount: amt, method: selectedMethod,
+        status: "PROCESSING", date: new Date(), note: `Withdrawal requested to ${destination}`
+      };
+      transactions.unshift(txn);
+      withdrawBtn.disabled = true;
+      withdrawBtn.textContent = "Processing…";
       renderWallet();
-      walletToast.innerHTML = willFail
-        ? `<div class="toast bad">Withdrawal failed due to a network drop. Your balance is unaffected — please try again.</div>`
-        : `<div class="toast ok">${fmtRupee(amt)} sent via ${selectedMethod}.</div>`;
-    }, 1400);
+      showToast(walletToast, "ok", `Withdrawal of ${fmtRupee(amt)} initiated via ${selectedMethod}.`);
+
+      // simulate a rural-network settlement delay, with a small chance of failure to retry
+      setTimeout(() => {
+        const willFail = Math.random() < 0.12;
+        txn.status = willFail ? "FAILED" : "SUCCESS";
+        txn.note = willFail ? `${selectedMethod} withdrawal failed — signal dropped, funds returned` : `Withdrawal to ${destination} completed`;
+        withdrawBtn.disabled = false;
+        withdrawBtn.textContent = "Withdraw (password required)";
+        withdrawAmount.value = "";
+        renderWallet();
+        showToast(walletToast, willFail ? "bad" : "ok",
+          willFail
+            ? "Withdrawal failed due to a network drop. Your balance is unaffected — please try again."
+            : `${fmtRupee(amt)} sent to ${destination}.`,
+          6000
+        );
+      }, 1400);
+    });
   });
 
   // ---------- init ----------
   updateEstimate();
-  renderOwnerList();
-  renderFarmerView();
-  renderWallet();
-})();   
+  updateDistEstimate();
+  renderSessionBox();
+  renderQuickLogins();
+})();
 </script>
 
 </body>
